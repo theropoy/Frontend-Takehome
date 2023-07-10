@@ -6,3 +6,8 @@
   
   min-height: 100vh;
 }
+
+.title {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}

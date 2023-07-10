@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import styles from '../styles/Card.module.css'
+import React, { useContext, useEffect, useState } from "react";
+import styles from '../../styles/Card.module.css'
+import { UserContext } from "../cardRouter/CardRouter";
 
 type Props = {
     
     first?: boolean
+    pathLen: number
     title: string
     
     value: string,
     callback: (x: string) => void
-    next: () => void
-    back: () => void
+
 }
 
-const CardText: React.FC<Props> = ({ first = false, title, value, callback, next, back}) => {
-
+const CardText: React.FC<Props> = ({ first = false, pathLen, title, value, callback}) => {
+    const contextData = useContext(UserContext);
     const [hasValue, setHasValue] = useState(false);
     useEffect(() => {
         if (value != "") {
@@ -23,13 +24,14 @@ const CardText: React.FC<Props> = ({ first = false, title, value, callback, next
 
     const goBack = () => {
         if (!first) {
-            back();
+            contextData.goBack();
         }
     }
 
     const goNext = () => {
         if (hasValue) {
-            next();
+            contextData.goNext(pathLen);
+            //next();
         }
     }
 

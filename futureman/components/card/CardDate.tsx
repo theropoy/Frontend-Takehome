@@ -1,28 +1,29 @@
-import styles from '../styles/Card.module.css'
+import { useContext } from 'react'
+import styles from '../../styles/Card.module.css'
+import { UserContext } from '../cardRouter/CardRouter'
 type Props = {
     
     first?: boolean
+    pathLen: number
     title: string
     
     value: Date,
     callback: (x: Date) => void
-    next: () => void
-    back: () => void
 }
 
-const CardDate: React.FC<Props> = ({ first = false, title, value, callback, next, back}) => {
+const CardDate: React.FC<Props> = ({ first = false, pathLen, title, value, callback,}) => {
 
-
+    const contextData = useContext(UserContext);
 
     const goBack = () => {
         if (!first) {
-            back();
+            contextData.goBack();
         }
     }
 
     const goNext = () => {
-
-            next();
+            contextData.goNext(pathLen);
+            //next();
     }
 
     return (
