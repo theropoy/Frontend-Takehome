@@ -16,6 +16,12 @@
     border: 1px solid rgba(255, 192, 35, 0.3);
 }
 
+@media screen and (min-width: 41rem) {
+    .container {
+        width: 40rem;
+    }
+}
+
 .navigation {
     display: flex;
     justify-content: space-between;
@@ -43,6 +49,7 @@
 
 .container h2 {
     margin-top: 1rem;
+    text-align: center;
     color: hsl(44, 100%, 20%);
 }
 

@@ -5,9 +5,11 @@
   align-items: center;
   
   min-height: 100vh;
+  background-color: hsl(44, 100%, 98%);
 }
 
 .title {
   margin-top: 2rem;
   margin-bottom: 3rem;
+  color: hsl(44, 100%, 5%);
 }
