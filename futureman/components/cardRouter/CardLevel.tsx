@@ -4,7 +4,7 @@ import { UserContext } from "./CardRouter";
 
 type Props = {
     children: JSX.Element | JSX.Element[],
-    onEnter?: () => void
+    onEnter?: () => void,
 }
 
 const CardLevel: React.FC<Props> = ({children, onEnter}) => {

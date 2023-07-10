@@ -41,59 +41,31 @@ export default function Home() {
         );
 	}
 
-	const goNext = (max: number) => {
-		const currentLocations = [...locations];
-		const currentLocation = {...locations[locations.length - 1]};
-	
-		if (currentLocation.question + 1 == max) {
-	
-		  // Check if coming from level 0
-		  if (currentLocation.level == 0) {
-			if(!((val0.q1 + val0.q2) % 2==0)) currentLocation.path = 1;
-		  } else {
-			currentLocation.path = 0;
-		  }
-	
-		  currentLocation.question = 0;
-		  currentLocation.level += 1;
-		} else {
-		  currentLocation.question += 1;
-		}
-	
-	
-		currentLocations.push(currentLocation);
-		setLocations(currentLocations);
+	/*
+		Path decider
+		Write Conditions into the right switch case		
+	*/
+	const decider = (locat: locationType) => {
+		const currentLocation = locat;
+
+		switch (currentLocation.level) {
+			case 0:
+				if(!((val0.q1 + val0.q2) % 2==0)) currentLocation.path = 1;
+				break;
+			default:
+				currentLocation.path = 0; 
+		};
+
+
+		return currentLocation;
 	}
 
-	const goBack = () =>  {
-		const currentLocations = [...locations];
-		const currentLocation = {...locations[locations.length - 1]};
-	
-		if (currentLocation.question == 0) {
-		  currentLocation.question = 1;
-		  currentLocation.level -= 1;
-		} else {
-		  currentLocation.question -= 1;
-		}
-	
-		currentLocations.pop();
-		setLocations(currentLocations);
-	}
-	const goTo = (n: number) => {
-		const currentLocations = {...locations};
-		const newLocations: locationType[] = [];
-	
-		for (let i = 0; i <= n; i++) {
-		  newLocations.push(currentLocations[i]);
-		}
-		setLocations(newLocations);
-	}
 
 	return (
     	<main className={styles.main}>
       		<h1 className={styles.title}>FIND YOUR DESTINY</h1>
 
-			<CardRouter location={locations[locations.length - 1]} goNext={goNext} goBack={goBack}>
+			<CardRouter decider={decider} locations={locations} setLocations={setLocations}>
 				<CardLevel key={0}>
 					<CardPath>
 						<CardNumber first={true} pathLen={2} title= "Choose your favorite number" value={val0.q1} callback={(x: number) => setVal0({...val0, q1: x}) }/>
@@ -114,7 +86,7 @@ export default function Home() {
 
 				<CardLevel key={2} onEnter={computeResult}>
 					<CardPath>
-						<Result locations={locations} goTo={goTo} text={result} val0={val0} val1={val1}/>
+						<Result text={result} val0={val0} val1={val1}/>
 					</CardPath>
         		</CardLevel>
       		</CardRouter>
