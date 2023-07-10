@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { locationType } from "../types";
+import { UserContext } from "./CardRouter";
 
 type Props = {
     children: JSX.Element | JSX.Element[]
-    location: locationType
 }
 
-const CardPath: React.FC<Props> = ({children, location}) => {
+const CardPath: React.FC<Props> = ({children}) => {
+    const contextData = useContext(UserContext);
     return(
         <>
-            {children.constructor === Array? children[location.question] : children}
+            {children.constructor === Array? children[contextData.location.question] : children}
         </>
     )
 }

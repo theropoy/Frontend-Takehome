@@ -5,6 +5,7 @@ export type locationType = {
 }
 
 type cardRouterType = {
+	location: locationType,
     goNext: (max: number) => void,
-	goBack: () => void
+	goBack: () => void,
 }

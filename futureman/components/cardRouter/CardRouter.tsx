@@ -3,6 +3,7 @@ import { cardRouterType, locationType } from "../types";
 
 
 export const UserContext = createContext<cardRouterType>({
+    location: {level: 0, path: 0, question: 0},
     goNext: (max: number) => null,
     goBack: () => null,
 });
@@ -16,7 +17,7 @@ type Props={
 
 const CardRouter: React.FC<Props> = ({children, location, goNext, goBack}) => {
     return (
-        <UserContext.Provider value={{goNext: goNext, goBack: goBack}}>
+        <UserContext.Provider value={{location: location, goNext: goNext, goBack: goBack}}>
             { children[location.level] }
         </UserContext.Provider>
     )

@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { locationType } from "../types";
+import { UserContext } from "./CardRouter";
 
 type Props = {
     children: JSX.Element | JSX.Element[],
-    location: locationType,
     onEnter?: () => void
 }
 
-const CardLevel: React.FC<Props> = ({children, location, onEnter}) => {
+const CardLevel: React.FC<Props> = ({children, onEnter}) => {
+    
+    const contextData = useContext(UserContext);
     
     useEffect(() => {
         if (onEnter) {
@@ -17,7 +19,7 @@ const CardLevel: React.FC<Props> = ({children, location, onEnter}) => {
     
     return (
         <>
-            {children.constructor === Array? children[location.path] : children}
+            {children.constructor === Array? children[contextData.location.path] : children}
         </>
     )
 }

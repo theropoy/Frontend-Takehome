@@ -1,0 +1,79 @@
+.container {
+    padding: 1rem;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* From https://css.glass */
+    background: hsl(44, 100%, 91%);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 192, 35, 0.3);
+}
+
+.container nav {
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;;
+}
+
+.container nav button {
+    padding: .2rem .3rem;
+
+    color: hsl(44, 100%, 40%);
+    background-color: hsl(44, 100%, 88%);
+    border: 1px solid hsl(44, 100%, 30%);
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.container nav button:hover {
+    color: hsl(44, 100%, 35%);
+    background-color: hsl(44, 100%, 80%);
+}
+
+.end {
+    color: hsl(44, 100%, 10%) !important;
+    background-color: hsl(44, 100%, 50%) !important;
+    cursor: default !important;
+}
+
+.container h2{
+    margin-top: 2rem;
+    color: hsl(44, 100%, 20%);
+}
+
+.container h3{
+    color: hsl(44, 100%, 5%);
+}
+
+.questions {
+    margin-top: 2rem;
+    list-style: none;
+}
+
+.questions li {
+    margin-top: .5rem;
+    padding: .6rem;
+
+    color: hsl(44, 100%, 10%);
+
+    background-color: hsl(44, 100%, 85%);
+    border: 1px solid hsl(44, 100%, 91%);
+    border-radius: 10px;
+    border-left: 4px solid hsl(44, 100%, 80%);
+
+    cursor: pointer;
+} 
+
+.questions li:hover {
+    background-color: hsl(44, 100%, 83%);
+    border-left: 4px solid hsl(44, 100%, 99%);
+}
