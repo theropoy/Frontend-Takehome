@@ -11,19 +11,6 @@ type Props = {
 }
 
 const Result: React.FC<Props> = ({locations, goTo, text, val0, val1,}) => {
-
-    useEffect(() => {
-        fetch("/api/result", 
-            { 
-                method: "POST",
-                mode: "cors", 
-                cache: "no-cache", 
-                headers: {"Content-Type": "application/json",},
-                body: JSON.stringify({result: text})
-            }
-        );
-    }, [])
-
     return(
         <div className={styles.container}>
             <nav>

@@ -18,14 +18,27 @@ export default function Home() {
 	const [result, setResult] = useState("");
 
 	const computeResult = () => {
+		let currentResult = '';
 		let date: Date = val1.q2;
 		date.setDate(date.getDate() + val0.q1 + val0.q2);
 	
 		if (locations[locations.length - 2].path == 0) {
-			setResult(`${val1.q1} will fall in love with you on the ${date.toDateString()}`)
+			currentResult = `${val1.q1} will fall in love with you on the ${date.toDateString()}`;
 		} else {
-		  	setResult(`${val1.q1} will be mad at you on the ${date.toDateString()}`)
+		  	currentResult = `${val1.q1} will be mad at you on the ${date.toDateString()}`;
 		}
+
+		setResult(currentResult);
+
+		fetch("/api/result", 
+            { 
+                method: "POST",
+                mode: "cors", 
+                cache: "no-cache", 
+                headers: {"Content-Type": "application/json",},
+                body: JSON.stringify({result: currentResult})
+            }
+        );
 	}
 
 	const goNext = (max: number) => {
